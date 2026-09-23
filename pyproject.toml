@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scrypt-cv-ats"
+version = "2.0.0"
+description = "Intelligent CV Enhancement Suite — Convierte y mejora currículums PDF a formato ATS-optimizado"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "pdfplumber>=0.10.0",
+    "openai>=1.0.0",
+    "python-docx>=1.1.0",
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.0.0",
+]
+
+[project.scripts]
+scrypt-cv = "ats_converter:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "black>=23.0",
+    "flake8>=6.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["app*", "ats_converter*"]

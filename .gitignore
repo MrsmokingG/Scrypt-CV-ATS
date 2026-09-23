@@ -1,0 +1,37 @@
+# === Variables de entorno (contienen claves API) ===
+.env
+.env.local
+
+# === Python ===
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# === Entornos virtuales ===
+venv/
+.venv/
+env/
+
+# === IDE ===
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# === OS ===
+.DS_Store
+Thumbs.db
+
+# === Resultados generados ===
+*.docx
+*.html
+curriculum_ats.html
+template_original.html
+index.html
+*.pdf
+curriculum_ats.docx

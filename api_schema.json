@@ -1,0 +1,509 @@
+{
+  "CVData": {
+    "description": "Estructura completa del currículum procesado (base).",
+    "properties": {
+      "datos_contacto": {
+        "description": "Nombre completo, dirección, teléfono, email",
+        "type": "string"
+      },
+      "perfil": {
+        "description": "Resumen profesional o perfil (original)",
+        "type": "string"
+      },
+      "perfil_mejorado": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Perfil profesional optimizado por IA para el puesto objetivo"
+      },
+      "experiencia_laboral": {
+        "description": "Lista de experiencias laborales en orden cronológico inverso",
+        "items": {
+          "description": "Experiencia laboral individual.",
+          "properties": {
+            "puesto": {
+              "description": "Título del cargo o puesto",
+              "type": "string"
+            },
+            "empresa": {
+              "description": "Nombre de la empresa empleadora",
+              "type": "string"
+            },
+            "fechas": {
+              "description": "Período (ej: 'ene. 2024 – sep. 2025')",
+              "type": "string"
+            },
+            "logros": {
+              "description": "Lista de logros o responsabilidades (originales)",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "logros_mejorados": {
+              "description": "Logros mejorados por IA con métricas cuantificables",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "puesto",
+            "empresa",
+            "fechas"
+          ],
+          "type": "object",
+          "additionalProperties": false
+        },
+        "type": "array"
+      },
+      "educacion": {
+        "description": "Lista de formación académica y cursos",
+        "items": {
+          "description": "Registro educativo o formación.",
+          "properties": {
+            "titulo": {
+              "description": "Título, grado o nombre del curso",
+              "type": "string"
+            },
+            "institucion": {
+              "description": "Institución educativa o entidad",
+              "type": "string"
+            },
+            "fechas": {
+              "description": "Año o período de estudio",
+              "type": "string"
+            }
+          },
+          "required": [
+            "titulo",
+            "institucion",
+            "fechas"
+          ],
+          "type": "object",
+          "additionalProperties": false
+        },
+        "type": "array"
+      },
+      "habilidades": {
+        "description": "Lista completa de habilidades",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "habilidades_mejoradas": {
+        "description": "Habilidades categorizadas y priorizadas por IA",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "palabras_clave_ats": {
+        "description": "Palabras clave ATS extraídas/optimizadas para el sector",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "datos_contacto",
+      "perfil"
+    ],
+    "type": "object",
+    "additionalProperties": false
+  },
+  "JobTarget": {
+    "description": "Configuración del puesto objetivo para personalización del CV.",
+    "properties": {
+      "titulo": {
+        "description": "Título del puesto al que se postula (ej: 'Jefe de Operaciones')",
+        "type": "string"
+      },
+      "industria": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Industria o sector (ej: 'Minería', 'Construcción', 'Logística')"
+      },
+      "seniority": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": "Sin especificar",
+        "description": "Nivel de seniority: 'Entry', 'Junior', 'Mid', 'Senior', 'Lead', 'Manager'"
+      },
+      "keywords_adicionales": {
+        "description": "Palabras clave adicionales del sector a incluir",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "tono": {
+        "default": "profesional",
+        "description": "Tono del CV: 'profesional', 'ejecutivo', 'técnico', 'creativo', 'minero-industrial'",
+        "type": "string"
+      },
+      "idioma": {
+        "default": "es",
+        "description": "Idioma: 'es' (español), 'en' (inglés), 'both' (bilingüe)",
+        "type": "string"
+      }
+    },
+    "required": [
+      "titulo"
+    ],
+    "type": "object",
+    "additionalProperties": false
+  },
+  "EnhancedCVData": {
+    "description": "Contenedor final: CV original + metadatos + contenido mejorado.",
+    "properties": {
+      "cv_original": {
+        "description": "Estructura completa del currículum procesado (base).",
+        "properties": {
+          "datos_contacto": {
+            "description": "Nombre completo, dirección, teléfono, email",
+            "type": "string"
+          },
+          "perfil": {
+            "description": "Resumen profesional o perfil (original)",
+            "type": "string"
+          },
+          "perfil_mejorado": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Perfil profesional optimizado por IA para el puesto objetivo"
+          },
+          "experiencia_laboral": {
+            "description": "Lista de experiencias laborales en orden cronológico inverso",
+            "items": {
+              "description": "Experiencia laboral individual.",
+              "properties": {
+                "puesto": {
+                  "description": "Título del cargo o puesto",
+                  "type": "string"
+                },
+                "empresa": {
+                  "description": "Nombre de la empresa empleadora",
+                  "type": "string"
+                },
+                "fechas": {
+                  "description": "Período (ej: 'ene. 2024 – sep. 2025')",
+                  "type": "string"
+                },
+                "logros": {
+                  "description": "Lista de logros o responsabilidades (originales)",
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "logros_mejorados": {
+                  "description": "Logros mejorados por IA con métricas cuantificables",
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                }
+              },
+              "required": [
+                "puesto",
+                "empresa",
+                "fechas"
+              ],
+              "type": "object",
+              "additionalProperties": false
+            },
+            "type": "array"
+          },
+          "educacion": {
+            "description": "Lista de formación académica y cursos",
+            "items": {
+              "description": "Registro educativo o formación.",
+              "properties": {
+                "titulo": {
+                  "description": "Título, grado o nombre del curso",
+                  "type": "string"
+                },
+                "institucion": {
+                  "description": "Institución educativa o entidad",
+                  "type": "string"
+                },
+                "fechas": {
+                  "description": "Año o período de estudio",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "titulo",
+                "institucion",
+                "fechas"
+              ],
+              "type": "object",
+              "additionalProperties": false
+            },
+            "type": "array"
+          },
+          "habilidades": {
+            "description": "Lista completa de habilidades",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "habilidades_mejoradas": {
+            "description": "Habilidades categorizadas y priorizadas por IA",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "palabras_clave_ats": {
+            "description": "Palabras clave ATS extraídas/optimizadas para el sector",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "datos_contacto",
+          "perfil"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "job_target": {
+        "description": "Configuración del puesto objetivo para personalización del CV.",
+        "properties": {
+          "titulo": {
+            "description": "Título del puesto al que se postula (ej: 'Jefe de Operaciones')",
+            "type": "string"
+          },
+          "industria": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Industria o sector (ej: 'Minería', 'Construcción', 'Logística')"
+          },
+          "seniority": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": "Sin especificar",
+            "description": "Nivel de seniority: 'Entry', 'Junior', 'Mid', 'Senior', 'Lead', 'Manager'"
+          },
+          "keywords_adicionales": {
+            "description": "Palabras clave adicionales del sector a incluir",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "tono": {
+            "default": "profesional",
+            "description": "Tono del CV: 'profesional', 'ejecutivo', 'técnico', 'creativo', 'minero-industrial'",
+            "type": "string"
+          },
+          "idioma": {
+            "default": "es",
+            "description": "Idioma: 'es' (español), 'en' (inglés), 'both' (bilingüe)",
+            "type": "string"
+          }
+        },
+        "required": [
+          "titulo"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "cv_mejorado": {
+        "description": "Estructura completa del currículum procesado (base).",
+        "properties": {
+          "datos_contacto": {
+            "description": "Nombre completo, dirección, teléfono, email",
+            "type": "string"
+          },
+          "perfil": {
+            "description": "Resumen profesional o perfil (original)",
+            "type": "string"
+          },
+          "perfil_mejorado": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Perfil profesional optimizado por IA para el puesto objetivo"
+          },
+          "experiencia_laboral": {
+            "description": "Lista de experiencias laborales en orden cronológico inverso",
+            "items": {
+              "description": "Experiencia laboral individual.",
+              "properties": {
+                "puesto": {
+                  "description": "Título del cargo o puesto",
+                  "type": "string"
+                },
+                "empresa": {
+                  "description": "Nombre de la empresa empleadora",
+                  "type": "string"
+                },
+                "fechas": {
+                  "description": "Período (ej: 'ene. 2024 – sep. 2025')",
+                  "type": "string"
+                },
+                "logros": {
+                  "description": "Lista de logros o responsabilidades (originales)",
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "logros_mejorados": {
+                  "description": "Logros mejorados por IA con métricas cuantificables",
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                }
+              },
+              "required": [
+                "puesto",
+                "empresa",
+                "fechas"
+              ],
+              "type": "object",
+              "additionalProperties": false
+            },
+            "type": "array"
+          },
+          "educacion": {
+            "description": "Lista de formación académica y cursos",
+            "items": {
+              "description": "Registro educativo o formación.",
+              "properties": {
+                "titulo": {
+                  "description": "Título, grado o nombre del curso",
+                  "type": "string"
+                },
+                "institucion": {
+                  "description": "Institución educativa o entidad",
+                  "type": "string"
+                },
+                "fechas": {
+                  "description": "Año o período de estudio",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "titulo",
+                "institucion",
+                "fechas"
+              ],
+              "type": "object",
+              "additionalProperties": false
+            },
+            "type": "array"
+          },
+          "habilidades": {
+            "description": "Lista completa de habilidades",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "habilidades_mejoradas": {
+            "description": "Habilidades categorizadas y priorizadas por IA",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "palabras_clave_ats": {
+            "description": "Palabras clave ATS extraídas/optimizadas para el sector",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "datos_contacto",
+          "perfil"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "score_ats": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Puntuación estimada de compatibilidad ATS (0-100)"
+      },
+      "sugerencias": {
+        "description": "Sugerencias adicionales para mejorar el CV",
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "cv_original",
+      "job_target",
+      "cv_mejorado"
+    ],
+    "type": "object",
+    "additionalProperties": false
+  }
+}
