@@ -1,7 +1,7 @@
 import json
 with open("api_schema.json", "r", encoding="utf-8") as f:
     d = json.load(f)
-print("Valid JSON ✓")
+print("Valid JSON - OK")
 print("Models:", list(d.keys()))
 
 # Check no $ref remains

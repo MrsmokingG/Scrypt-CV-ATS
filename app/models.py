@@ -1,10 +1,11 @@
 # app/models.py
-# Modelos de datos del currículum — usando dataclasses estándar de Python
-# (sin dependencias de terceros, compatible con cualquier versión de Python)
+# Modelos de datos del currículum — usando Pydantic dataclasses
+# Compatible con json_schema() para generación de esquemas ATS.
 # ---------------------------------------------------------------------------
 
-from dataclasses import dataclass, field
+from dataclasses import field
 from typing import Optional, List
+from pydantic.dataclasses import dataclass
 
 
 # ============================================================================
